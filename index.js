@@ -86,9 +86,28 @@ controller.on('bot_channel_join', function (bot, message) {
 });
 
 controller.hears('hello', 'direct_message', function (bot, message) {
-    bot.reply(message, 'Hello!');
+    bot.reply(message, 'Hello000!');
 });
 
+controller.hears('hello', ['direct_mention', 'mention'], function (bot, message) {
+    bot.reply(message, 'I am here');
+});
+
+controller.hears(["<!here>"], 'ambient', function (bot, message) {
+    bot.reply(message, 'It is never necessary to @here in random. ');
+});
+
+controller.hears('<!channel>', 'ambient', function (bot, message) {
+    bot.reply(message, 'DO NOT @channel');
+});
+
+
+controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message_received'],function(bot,message) {
+
+    // do something to respond to message
+    bot.reply(message,'Oh hai!');
+
+});
 
 /**
  * AN example of what could be:
